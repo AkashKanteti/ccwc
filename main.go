@@ -29,11 +29,17 @@ func main() {
 		if *byteCounter {
 			fmt.Printf("%v %v", len(cnt), fileName)
 		} else if *lineCounter {
-			str := string(cnt)
-			arr := strings.Split(str, "\n")
-			fmt.Printf("%v %v", len(arr), fileName)
+			lines := splitter(cnt)
+			fmt.Printf("%v %v", len(lines), fileName)
 		} else {
 			fmt.Printf("No option choosen")
 		}
 	}
+}
+
+func splitter(text []byte) []string {
+	str := string(text)
+	str = strings.Trim(str, " \n")
+	arr := strings.Split(str, "\n")
+	return arr
 }
