@@ -1,3 +1,3 @@
 # ccwc
 
-trying to mimic wc command in Linux
+trying to mimic wc Linux command in Golang
