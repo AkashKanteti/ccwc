@@ -11,8 +11,9 @@ import (
 func main() {
 	wc := flag.NewFlagSet("wc", flag.ExitOnError)
 	byteCounter := wc.Bool("c", false, "to set byte counter")
-	lineCounter := wc.Bool("l", false, "to set line countet")
-	wordCounter := wc.Bool("w", false, "to set word countet")
+	lineCounter := wc.Bool("l", false, "to set line counter")
+	wordCounter := wc.Bool("w", false, "to set word counter")
+	characterCounter := wc.Bool("m", false, "to set character counter")
 
 	switch os.Args[1] {
 	case "wc":
@@ -46,6 +47,11 @@ func main() {
 			}
 
 			fmt.Printf("%v %v", count, fileName)
+		} else if *characterCounter {
+			str := string(cnt)
+			arr := strings.Split(str, "")
+
+			fmt.Printf("%v %v", len(arr), fileName)
 		} else {
 			fmt.Printf("No option choosen")
 		}
