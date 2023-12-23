@@ -53,7 +53,10 @@ func main() {
 
 			fmt.Printf("%v %v", len(arr), fileName)
 		} else {
-			fmt.Printf("No option choosen")
+			lines := splitter(cnt, "\n")
+			words := findCountOfWords(lines)
+
+			fmt.Printf("%v %v %v %v", len(lines), words, len(cnt), fileName)
 		}
 	}
 }
@@ -62,6 +65,18 @@ func splitter(text []byte, sep string) []string {
 	str := string(text)
 	arr := strings.FieldsFunc(str, fun)
 	return arr
+}
+
+func findCountOfWords(lines []string) int {
+	var count int
+
+	for _, line := range lines {
+		line = strings.TrimSpace(line)
+		arr := strings.Fields(line)
+		count = count + len(arr)
+	}
+
+	return count
 }
 
 func fun(r rune) bool {
